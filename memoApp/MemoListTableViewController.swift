@@ -8,7 +8,15 @@
 import UIKit
 
 class MemoListTableViewController: UITableViewController {
-
+    
+    let formatter: DateFormatter = {
+        let f = DateFormatter()
+        f.dateStyle = .long
+        f.timeStyle = .none
+        f.locale = Locale(identifier: "Ko_kr")
+        return f
+    }()
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,7 +39,7 @@ class MemoListTableViewController: UITableViewController {
         
         let memo = Memo.dummyMemoList[indexPath.row]
         cell.textLabel?.text = memo.content
-        cell.detailTextLabel?.text = "\(memo.insertDate)"
+        cell.detailTextLabel?.text = formatter.string(from: memo.insertDate)
 
         return cell
     }
