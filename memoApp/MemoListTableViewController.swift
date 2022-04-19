@@ -16,16 +16,21 @@ class MemoListTableViewController: UITableViewController {
         f.locale = Locale(identifier: "Ko_kr")
         return f
     }()
+    
+    var token: NSObjectProtocol?
+    
+    deinit {
+        if let token = token {
+            NotificationCenter.default.removeObserver(token)
+        }
+    }
  
     override func viewDidLoad() {
         super.viewDidLoad()
-
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
-        tableView.reloadData()
+        token = NotificationCenter.default.addObserver(forName: ComposeViewController.newMemoDidInsert, object: nil, queue: OperationQueue.main) { [weak self] (noti) in
+            self?.tableView.reloadData()
+        }
     }
 
     // MARK: - Table view data source
@@ -43,6 +48,15 @@ class MemoListTableViewController: UITableViewController {
         cell.detailTextLabel?.text = formatter.string(from: memo.insertDate)
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "detailVC") as? DetailViewController else { return }
+        self.navigationController?.pushViewController(detailVC, animated: true)
+        
+        Memo.memoSelected = Memo.dummyMemoList[indexPath.row]
+        
     }
 
     /*
@@ -80,14 +94,17 @@ class MemoListTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
+        if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
+            let memo = Memo.dummyMemoList[indexPath.row]
+            
+            if let vc = segue.destination as? DetailViewController {
+                vc.memo = memo
+            }
+        }
     }
-    */
 
 }

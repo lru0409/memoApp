@@ -20,4 +20,6 @@ class Memo {
         Memo(content: "안녕"),
         Memo(content: "하이")
     ]
+    
+    static var memoSelected : Memo?
 }
