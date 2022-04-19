@@ -48,7 +48,7 @@ extension DetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        memo = Memo.memoSelected
+        memo = DataManager.shared.memoSelected
         
         switch indexPath.row {
         case 0 :

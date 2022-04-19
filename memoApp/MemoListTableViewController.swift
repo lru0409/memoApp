@@ -32,20 +32,24 @@ class MemoListTableViewController: UITableViewController {
             self?.tableView.reloadData()
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        DataManager.shared.fetchMemo()
+        tableView.reloadData()
+    }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return Memo.dummyMemoList.count
+        return DataManager.shared.memoList.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        let memo = Memo.dummyMemoList[indexPath.row]
+        let memo = DataManager.shared.memoList[indexPath.row]
         cell.textLabel?.text = memo.content
-        cell.detailTextLabel?.text = formatter.string(from: memo.insertDate)
+        cell.detailTextLabel?.text = formatter.string(for : memo.insertDate)
 
         return cell
     }
@@ -55,7 +59,7 @@ class MemoListTableViewController: UITableViewController {
         guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "detailVC") as? DetailViewController else { return }
         self.navigationController?.pushViewController(detailVC, animated: true)
         
-        Memo.memoSelected = Memo.dummyMemoList[indexPath.row]
+        DataManager.shared.memoSelected = DataManager.shared.memoList[indexPath.row]
         
     }
 
@@ -93,18 +97,5 @@ class MemoListTableViewController: UITableViewController {
         return true
     }
     */
-
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
-            let memo = Memo.dummyMemoList[indexPath.row]
-            
-            if let vc = segue.destination as? DetailViewController {
-                vc.memo = memo
-            }
-        }
-    }
 
 }
