@@ -21,9 +21,9 @@ class ComposeViewController: UIViewController {
         guard let memo = newMemoTextView.text, memo.count > 0 else {
             alert(message: "메모를 입력하세요")
             return
-        }
-        //let newMeme = Memo(content: memo)
-        //Memo.dummyMemoList.append(newMeme)
+        } 
+        DataManager.shared.addNewMemo(memo)
+        
         NotificationCenter.default.post(name: ComposeViewController.newMemoDidInsert, object: nil)
         self.dismiss(animated: true, completion: nil)
     }

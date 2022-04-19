@@ -34,10 +34,20 @@ class DataManager {
         }
     }
     
+    func addNewMemo(_ memo: String?) {
+        let newMemo = Memo(context: mainContext)
+        newMemo.content = memo
+        newMemo.insertDate = Date()
+         
+        memoList.insert(newMemo, at: 0)
+        
+        saveContext()
+    }
+    
     // MARK: - Core Data Stack
     
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "memoApp")
+        let container = NSPersistentContainer(name: "MemoApp")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -63,3 +73,4 @@ class DataManager {
     }
     
 }
+

@@ -35,7 +35,7 @@ class MemoListTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         DataManager.shared.fetchMemo()
-        tableView.reloadData()
+        tableView.reloadData() 
     }
 
     // MARK: - Table view data source
