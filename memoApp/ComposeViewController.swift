@@ -9,6 +9,8 @@ import UIKit
 
 class ComposeViewController: UIViewController {
     
+    static let newMemoDidInsert = Notification.Name("newMemoDidInsert")
+    
     @IBOutlet weak var newMemoTextView: UITextView!
     
     @IBAction func close(_ sender: Any) {
@@ -16,16 +18,19 @@ class ComposeViewController: UIViewController {
     }
     
     @IBAction func seve(_ sender: Any) {
-        guard let memo = newMemoTextView.text else { return }
+        guard let memo = newMemoTextView.text, memo.count > 0 else {
+            alert(message: "메모를 입력하세요")
+            return
+        }
         let newMeme = Memo(content: memo)
         Memo.dummyMemoList.append(newMeme)
+        NotificationCenter.default.post(name: ComposeViewController.newMemoDidInsert, object: nil)
         self.dismiss(animated: true, completion: nil)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
     }
     
 
