@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cVv-F8-S0F">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cVv-F8-S0F">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -111,16 +111,32 @@
                                     <outlet property="dataSource" destination="cSa-Eq-PjO" id="Mwi-hY-B53"/>
                                 </connections>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lAi-jj-3d9">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem systemItem="compose" id="Ddt-Gb-t6d">
+                                        <connections>
+                                            <segue destination="hff-GG-sKx" kind="presentation" id="WWl-aT-qNB"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xlG-cm-ct2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="lAi-jj-3d9" firstAttribute="leading" secondItem="xlG-cm-ct2" secondAttribute="leading" id="2KF-aP-Lxw"/>
                             <constraint firstItem="1ET-ts-EqJ" firstAttribute="leading" secondItem="xlG-cm-ct2" secondAttribute="leading" id="8OY-91-zx1"/>
                             <constraint firstAttribute="bottom" secondItem="1ET-ts-EqJ" secondAttribute="bottom" id="FTa-HG-nSk"/>
                             <constraint firstItem="1ET-ts-EqJ" firstAttribute="top" secondItem="xlG-cm-ct2" secondAttribute="top" id="MNd-Ft-vO8"/>
+                            <constraint firstItem="xlG-cm-ct2" firstAttribute="bottom" secondItem="lAi-jj-3d9" secondAttribute="bottom" id="MOH-rB-6N4"/>
                             <constraint firstItem="xlG-cm-ct2" firstAttribute="trailing" secondItem="1ET-ts-EqJ" secondAttribute="trailing" id="lLb-Df-Lnv"/>
+                            <constraint firstItem="lAi-jj-3d9" firstAttribute="trailing" secondItem="xlG-cm-ct2" secondAttribute="trailing" id="o4R-1i-u7S"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="memoTableView" destination="1ET-ts-EqJ" id="qEL-9A-vV8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0EM-e0-R1r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -131,11 +147,11 @@
             <objects>
                 <viewController id="Nfb-40-KmN" customClass="ComposeViewController" customModule="memoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P8b-Wl-HAi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4ZD-4j-nk0">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -175,7 +191,6 @@
         <!--Navigation Controller-->
         <scene sceneID="H6O-XW-wsf">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hPK-91-dBc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController toolbarHidden="NO" id="cVv-F8-S0F" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Kpd-tF-q4k">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -185,6 +200,7 @@
                         <segue destination="EK5-JS-69F" kind="relationship" relationship="rootViewController" id="NGo-Qe-o4D"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hPK-91-dBc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-613" y="24"/>
         </scene>
@@ -194,7 +210,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hff-GG-sKx" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eG5-ud-AzS">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -207,6 +223,9 @@
             <point key="canvasLocation" x="1038" y="-184"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="WWl-aT-qNB"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
