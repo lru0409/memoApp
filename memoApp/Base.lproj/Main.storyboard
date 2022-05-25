@@ -176,12 +176,12 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="저장" id="oIj-5h-30K">
                             <connections>
-                                <action selector="seve:" destination="Nfb-40-KmN" id="2Jz-3R-qDq"/>
+                                <action selector="save:" destination="Nfb-40-KmN" id="6M1-me-ses"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="newMemoTextView" destination="4ZD-4j-nk0" id="pIN-I9-8rX"/>
+                        <outlet property="memoTextView" destination="4ZD-4j-nk0" id="2Qy-vQ-VxY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lba-Ci-qAp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
