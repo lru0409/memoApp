@@ -126,6 +126,12 @@
                                             <segue destination="hff-GG-sKx" kind="presentation" id="WWl-aT-qNB"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="x3z-Wq-x0t"/>
+                                    <barButtonItem systemItem="action" id="GdG-dO-m8g">
+                                        <connections>
+                                            <action selector="share:" destination="cSa-Eq-PjO" id="ScK-uE-fge"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>

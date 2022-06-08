@@ -20,6 +20,13 @@ class DetailViewController: UIViewController {
         return f
     }()
     
+    @IBAction func share(_ sender: Any) {
+        guard let memo = memo?.content else { return }
+
+        let vc = UIActivityViewController(activityItems: [memo], applicationActivities: nil)
+        present(vc, animated: true)
+    }
+    
     @IBAction func deleteMemo(_ sender: Any) {
         let alert = UIAlertController(title: "삭제 확인", message: "메모를 삭제할까요?", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "삭제", style: .destructive) { [weak self] (action) in
